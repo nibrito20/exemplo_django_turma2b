@@ -22,8 +22,9 @@ class Pergunta(models.Model):
 class Resposta(models.Model):
     pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE)
     texto = models.TextField(null=False)
-    votos = models.ImageField(default=0)
-    data_criacao = models.CharField(max_length=200, null=False, default="anônimo")
+    votos = models.IntegerField(default=0)
+    data_criacao = models.DateTimeField(max_length=200, null=False, default="anônimo")
+    usuario = models.CharField(max_length=200, null=False, default="anônimo")
 
     def __str__(self):
         return "[" + str(self.id) + "]" + self.texto
